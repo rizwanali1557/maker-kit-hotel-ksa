@@ -1,0 +1,67 @@
+{
+  "name": "next-supabase-saas-kit-turbo-lite",
+  "version": "0.2.0",
+  "private": true,
+  "sideEffects": false,
+  "engines": {
+    "node": ">=v18.18.0"
+  },
+  "author": {
+    "url": "https://connation.net",
+    "name": "Connation"
+  },
+  "scripts": {
+    "preinstall": "pnpm run --filter scripts requirements",
+    "postinstall": "manypkg fix",
+    "build": "turbo build --cache-dir=.turbo",
+    "clean": "git clean -xdf node_modules dist .next",
+    "clean:workspaces": "turbo clean",
+    "dev": "cross-env FORCE_COLOR=1 turbo dev --parallel",
+    "format": "turbo format --cache-dir=.turbo --continue -- --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
+    "format:fix": "turbo format --cache-dir=.turbo --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
+    "lint": "turbo lint --cache-dir=.turbo --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg check",
+    "lint:fix": "turbo lint --cache-dir=.turbo --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg fix",
+    "typecheck": "turbo typecheck --cache-dir=.turbo",
+    "test": "turbo test --cache-dir=.turbo",
+    "update": "pnpm update -r",
+    "syncpack:list": "pnpm dlx syncpack list-mismatches",
+    "syncpack:fix": "pnpm dlx syncpack fix-mismatches",
+    "supabase:web:start": "pnpm --filter web supabase:start",
+    "supabase:web:stop": "pnpm --filter web supabase:stop",
+    "supabase:web:typegen": "pnpm --filter web supabase:typegen",
+    "supabase:web:reset": "pnpm --filter web supabase:reset && node scripts/upload-images-to-supabase.js"
+  },
+  "prettier": "@kit/prettier-config",
+  "packageManager": "pnpm@10.16.1",
+  "pnpm": {
+    "overrides": {
+      "react-is": "19.0.0"
+    }
+  },
+  "devDependencies": {
+    "@date-io/date-fns": "^3.2.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@manypkg/cli": "^0.25.1",
+    "@mui/icons-material": "^7.3.2",
+    "@mui/lab": "7.0.0-beta.17",
+    "@mui/material": "^7.3.2",
+    "@mui/system": "^7.3.2",
+    "@mui/utils": "7.3.2",
+    "@mui/x-date-pickers": "^8.11.2",
+    "@mui/x-date-pickers-pro": "^8.11.2",
+    "@supabase/supabase-js": "^2.57.4",
+    "@turbo/gen": "^2.5.6",
+    "@types/leaflet": "^1.9.20",
+    "@types/react-leaflet": "^3.0.0",
+    "cross-env": "^10.0.0",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.16",
+    "prettier": "^3.5.3",
+    "react-datepicker": "^8.7.0",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "turbo": "2.5.6",
+    "typescript": "^5.7.3"
+  }
+}
